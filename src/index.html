@@ -23,6 +23,20 @@
 </head>
 
 <body>
+  <h2>Dynamic Message from the Edge:</h2>
+<p id="worker-message">Loading...</p>
+  <script>
+  fetch('https://https://api-for-demo.nigel-furtado.workers.dev/')
+    .then(response => response.json())
+    .then(data => {
+      const messageElement = document.getElementById('worker-message');
+      messageElement.textContent = `${data.message} (Served from: ${data.colo})`;
+    })
+    .catch(error => {
+      console.error('Error fetching from worker:', error);
+      document.getElementById('worker-message').textContent = 'Could not load message.';
+    });
+</script>
 <img src="https://pub-82fd2a4284444ab18f7ec18e6f8c6a61.r2.dev/dw.webp" alt="Company Logo">
   <!-- Add your site or application content here -->
   <p>Hello world! This is HTML5 Boilerplate.</p>
